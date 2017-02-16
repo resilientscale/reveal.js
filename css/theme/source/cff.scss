@@ -1,10 +1,3 @@
-/**
- * Black theme for reveal.js. This is the opposite of the 'white' theme.
- *
- * By Hakim El Hattab, http://hakim.se
- */
-
-
 // Default mixins and settings -----------------
 @import "../template/mixins";
 @import "../template/settings";
@@ -32,6 +25,9 @@ $linkColor: #42affa;
 $linkColorHover: lighten( $linkColor, 15% );
 $selectionBackgroundColor: lighten( $linkColor, 25% );
 
+$highlightTextColor: #0c9ed5;
+$subduedTextColor: gray;
+
 $heading1Size: 2.5em;
 $heading2Size: 1.6em;
 $heading3Size: 1.3em;
@@ -57,6 +53,106 @@ div.logo img {
 	border: 0px;
 	background: rgba(255, 255, 255, 0);
 }
+
+.reveal section h1.main-title {
+  text-align: left;
+  letter-spacing: -5px;
+}
+
+.reveal section h2.sub-title {
+  text-align: left;
+  font-size: 75%;
+  color: $highlightTextColor;
+  letter-spacing: -1px;
+}
+
+/* current fragments will be larger and white.  previous fragments will be gray and smaller */
+.fragment {
+  color: $subduedTextColor;
+}
+
+.fragment.current-fragment {
+  color: $mainColor;
+}
+
+/* highlight strong elements with color and size */
+.reveal strong {
+  color: $highlightTextColor;
+  font-size: 115%;
+}
+
+/* 3 equal columns */
+ul.three-column {
+  -webkit-column-count: 3; /* Chrome, Safari, Opera */
+  -moz-column-count: 3; /* Firefox */
+  column-count: 3;
+
+  -webkit-column-gap: 20px;
+  column-gap: 20px;
+  -moz-column-gap: 20px;
+
+  width: 100%;
+  margin-bottom:20px;
+
+}
+
+ul.three-column li {
+  width: 100%;
+  line-height:1.5em;
+  float: left;
+  display: inline;
+  margin-left: 20px;
+  text-align: center;
+  color: $highlightTextColor;
+}
+
+ul.three-column i {
+  font-size: 200%;
+  color: $mainColor;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/* quote formatting */
+.reveal section.quote p.quote-attribution {
+  float: left;
+  text-align: left;
+  font-size: 75%;
+  vertical-align: bottom;
+  padding-top: 60px;
+  margin-bottom: 0;
+  display: block;
+  width: 100%
+}
+
+.reveal section.quote p.quote-source {
+  font-size: 50%;
+  color: $subduedTextColor;
+  float: left;
+  text-align: left;
+  margin-top: 10px;
+  font-style: italic;
+  display: block;
+  width: 100%;
+}
+
+/* build in each quote one at a time.  */
+.reveal section.build-in-quotes p.quote-attribution {
+  vertical-align: top;
+  padding-top: 0px;
+  padding-bottom: 60px;
+  margin-bottom: 0;
+}
+
+.reveal section.build-in-quotes p.quote-source {
+  margin-top: 30px;
+}
+
+.reveal section.build-in-quotes ul {
+  list-style-type: none;
+  text-align: center;
+}
+
 
 // Theme template ------------------------------
 @import "../template/theme";
