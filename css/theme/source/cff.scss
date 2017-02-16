@@ -1,0 +1,63 @@
+/**
+ * Black theme for reveal.js. This is the opposite of the 'white' theme.
+ *
+ * By Hakim El Hattab, http://hakim.se
+ */
+
+
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+
+// Include theme-specific fonts
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+
+// Override theme settings (see ../template/settings.scss)
+$backgroundColor: #383838;
+
+$mainColor: #fff;
+$headingColor: #fff;
+
+$mainFontSize: 42px;
+$mainFont: 'Roboto-Light', sans-serif;
+$headingFont: 'Roboto-Light', sans-serif;
+$headingTextShadow: none;
+$headingLetterSpacing: normal;
+$headingTextTransform: none;
+$headingFontWeight: 400;
+$linkColor: #42affa;
+$linkColorHover: lighten( $linkColor, 15% );
+$selectionBackgroundColor: lighten( $linkColor, 25% );
+
+$heading1Size: 2.5em;
+$heading2Size: 1.6em;
+$heading3Size: 1.3em;
+$heading4Size: 1.0em;
+
+section.has-light-background {
+	&, h1, h2, h3, h4, h5, h6 {
+		color: #222;
+	}
+}
+
+div.logo {
+	position: fixed;
+	bottom: 15px;
+	right: 15px;
+}
+
+div.logo img {
+	width: 100px;
+}
+
+.reveal section.last-slide img {
+	border: 0px;
+	background: rgba(255, 255, 255, 0);
+}
+
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------
