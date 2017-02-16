@@ -7,10 +7,13 @@
 		<title>reveal.js</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+		<link rel="stylesheet" href="css/theme/cff.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<link rel="stylesheet" href="plugin/slide-layout/slide-layout.css">
+		<link rel="stylesheet" href="lib/font/font-awesome-4.7.0/css/font-awesome.min.css">
 
 		<!-- Printing and PDF exports -->
 		<script>
@@ -22,10 +25,16 @@
 		</script>
 	</head>
 	<body>
+		<div class="logo">
+			<img src="img/logo-white.png" />
+		</div>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				 <section data-markdown="slides.md">
+				 </section>
+				 <section class="last-slide" data-background-color="#000000" data-transition="zoom">
+					 <img src="img/logo-white.png" />
+				 </section>
 			</div>
 		</div>
 
@@ -35,12 +44,18 @@
 		<script>
 			// More info https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
+
 				history: true,
+
+				progress: true,
+				controls: false,
 
 				// More info https://github.com/hakimel/reveal.js#dependencies
 				dependencies: [
+					{ src: 'plugin/jquery/jquery-3.1.1.min.js' },
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/slide-layout/slide-layout.js' },
 					{ src: 'plugin/notes/notes.js', async: true },
 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
 				]
