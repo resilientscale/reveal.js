@@ -1,0 +1,100 @@
+h1.main-title {
+  text-align: left;
+  letter-spacing: -5px;
+}
+
+h2.sub-title {
+  text-align: left;
+  font-size: 75%;
+  color: #0c9ed5;
+  letter-spacing: -1px;
+}
+
+/* current fragments will be larger and white.  previous fragments will be gray and smaller */
+.fragment {
+  color: gray;
+}
+
+.fragment.current-fragment {
+  color: white;
+}
+
+/* highlight strong elements with color and size */
+.reveal strong {
+  color: #0c9ed5;
+  font-size: 115%;
+}
+
+/* 3 equal columns */
+ul.three-column {
+  -webkit-column-count: 3; /* Chrome, Safari, Opera */
+  -moz-column-count: 3; /* Firefox */
+  column-count: 3;
+
+  -webkit-column-gap: 20px;
+  column-gap: 20px;
+  -moz-column-gap: 20px;
+
+  width: 100%;
+  margin-bottom:20px;
+
+}
+
+ul.three-column li {
+  width: 100%;
+  line-height:1.5em;
+  float: left;
+  display: inline;
+  margin-left: 20px;
+  text-align: center;
+  color: #0c9ed5;
+}
+
+ul.three-column i {
+  font-size: 200%;
+  color: white;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/* quote formatting */
+.reveal section.quote p.quote-attribution {
+  float: left;
+  text-align: left;
+  font-size: 75%;
+  vertical-align: bottom;
+  padding-top: 60px;
+  margin-bottom: 0;
+  display: block;
+  width: 100%
+}
+
+.reveal section.quote p.quote-source {
+  font-size: 50%;
+  color: #CCCCCC;
+  float: left;
+  text-align: left;
+  margin-top: 10px;
+  font-style: italic;
+  display: block;
+  width: 100%;
+}
+
+/* build in each quote one at a time.  */
+.reveal section.build-in-quotes p.quote-attribution {
+  vertical-align: top;
+  padding-top: 0px;
+  padding-bottom: 60px;
+  margin-bottom: 0;
+}
+
+.reveal section.build-in-quotes p.quote-source {
+  margin-top: 30px;
+}
+
+.reveal section.build-in-quotes ul {
+  list-style-type: none;
+  text-align: center;
+}
+
+/* build in each header *
