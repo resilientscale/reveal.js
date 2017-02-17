@@ -4,9 +4,44 @@ For simplicity, this fork of the repo contains all of the CFF modifications and 
 
 All of the reveal.js functionality should still be available.  Modifications should be additive in nature.
 
+## Developing
+
+To make development of slides (and this reveal fork) easier, you need to use docker.  
+
+1. Get the image:
+  ```
+  $ docker pull rscale/node
+  ```
+1. Clone this repo (if you haven't already)
+1. You should already have the developer certification repo locally (if not, go get it.  we will wait).
+1. Run it with the included script (from the root of this repo):
+  ```
+  $ ./docker-run.sh <path-to-local-reveal-clone> <path-to-slides-dir>
+  ```
+  Example:
+  ```
+  $ ./docker-run.sh ~/workspace/resilientscale/reveal.js ~/workspace/cloudfoundry/developer-training-course/slides
+  ```
+  This will put you into the running docker container with the correct directory mappings (reveal + slides).  In the container:
+  1. `cd reveal.js`
+  1. `npm install` - You likely only have to do this once.
+  1. `npm start`
+  1. In a browser, you can now navigate to `http://localhost:8000?pres=<preso-folder-name>`
+    Example: `http://localhost:8000?pres=cf-mocf-motivators`
+
+  You can change presentations by changing the value of '<preso-folder-name>' without restarting the container.  
+
+### Conventions
+
+This assumes the following:
+
+* Slides are in a named folder in `developer-training-course/slides` in a file called `slides.md` (i.e. `developer-training-course/slides/cf-motivators/slides.md`)
+* Images should be placed in `developer-training-course/slides/<preso-name>/images`.  The folder has to be called `images` to avoid conflicts with global images in this repo and to make building easy.
+* Image references in slides should be relative to the `<preso-name>` directory: example: `images/some-image.png`. Background images and inline images are both supported using this convention.
+
 ## Sample presentation
 
-A sample presentation is included: `slides.md`.  This leverages all of the current functionality and slides layouts.
+Check out the `cf-motivators` presentation for examples.
 
 ### Last Slide
 

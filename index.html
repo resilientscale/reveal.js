@@ -29,7 +29,7 @@
 		</div>
 		<div class="reveal">
 			<div class="slides">
-				 <section data-markdown="slides.md">
+				 <section class="markdown-slides">
 				 </section>
 				 <section class="last-slide" data-background-color="#000000" data-transition="zoom">
 					 <img src="img/logo-white.png" />
@@ -52,13 +52,16 @@
 				// More info https://github.com/hakimel/reveal.js#dependencies
 				dependencies: [
 					{ src: 'plugin/jquery/jquery-3.1.1.min.js' },
+					{ src: 'plugin/external-markdown/external-markdown.js' },
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/external-markdown/image-loader.js' },
 					{ src: 'plugin/slide-layout/slide-layout.js' },
 					{ src: 'plugin/notes/notes.js', async: true },
 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
 				]
 			});
+
 		</script>
 	</body>
 </html>
