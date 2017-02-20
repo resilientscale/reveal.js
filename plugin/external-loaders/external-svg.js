@@ -6,19 +6,26 @@
     for( var i = 0, len = images.length; i < len; i++ ) {
       image = images[i];
       if( image.getAttribute( 'data-svg' ).length ) {
-        parent = $(image).parent();
-        file = $(image).attr("data-svg");
+        var parent = $(image).parent();
+        var file = $(image).attr("data-svg");
 
-        var fragmentIds = [];
-        if ($(image).attr("fragment-ids").length) {
-          fragmentIds = $(image).attr("fragment-ids").split(",");
-        }
+        console.log("svg: " + file);
 
         // fetch the svg
-        filePath = "slides/" + window.presentation + "/" + file;
-        $.get(filePath, function(data) {
-          console.log($(data).find("svg"));
+        var filePath = "slides/" + window.presentation + "/" + file;
+        //$.get(filePath, function(data, status, jqXhr) {
+        $.ajax({
+          url: filePath,
+          async: false
+        })
+        .done(function(data) {
+          var fragmentIds = [];
+          if ($(image).attr("fragment-ids").length) {
+            fragmentIds = $(image).attr("fragment-ids").split(",");
+          }
+
           $(parent).html($(data).find("svg"));
+          $(parent).addClass("svg");
           // set fragments
           for (var j = 0; j < fragmentIds.length; j++) {
             fragId = "#" + fragmentIds[j].trim();
