@@ -20,7 +20,7 @@
         })
         .done(function(data) {
           var fragmentIds = [];
-          if ($(image).attr("fragment-ids").length) {
+          if ($(image).attr("fragment-ids") && $(image).attr("fragment-ids").length) {
             fragmentIds = $(image).attr("fragment-ids").split(",");
           }
 

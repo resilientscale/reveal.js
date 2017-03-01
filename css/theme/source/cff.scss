@@ -164,6 +164,15 @@ ul.three-column i {
   text-align: center;
 }
 
+.reveal svg {
+	width: 100%;
+}
+
+.reveal section img {
+	border: 0px !important;
+	background-color: $backgroundColor !important;
+	box-shadow: 0 0 0 #ffffff !important;
+}
 
 // Theme template ------------------------------
 @import "../template/theme";

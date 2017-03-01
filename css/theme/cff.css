@@ -108,6 +108,14 @@ ul.three-column i {
   list-style-type: none;
   text-align: center; }
 
+.reveal svg {
+  width: 100%; }
+
+.reveal section img {
+  border: 0px !important;
+  background-color: #383838 !important;
+  box-shadow: 0 0 0 #ffffff !important; }
+
 /*********************************************
  * GLOBAL STYLES
  *********************************************/
