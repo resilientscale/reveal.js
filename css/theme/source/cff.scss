@@ -112,10 +112,12 @@ ul.three-column li {
   width: 100%;
   line-height:1.5em;
   float: left;
-  display: inline;
+  display: inline-block;
   margin-left: 20px;
   text-align: center;
-  color: $highlightTextColor;
+	overflow: hidden; /* fix for Firefox */
+	break-inside: avoid-column;
+	-webkit-column-break-inside: avoid;
 }
 
 ul.three-column i {
