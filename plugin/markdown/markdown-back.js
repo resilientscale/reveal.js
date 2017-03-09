@@ -20,8 +20,7 @@
 	var DEFAULT_SLIDE_SEPARATOR = '^\r?\n---\r?\n$',
 		DEFAULT_NOTES_SEPARATOR = 'note:',
 		DEFAULT_ELEMENT_ATTRIBUTES_SEPARATOR = '\\\.element\\\s*?(.+?)$',
-		DEFAULT_SLIDE_ATTRIBUTES_SEPARATOR = '\\\.slide:\\\s*?(\\\S.+?)$',
-		DEFAULT_ELEARNING_SEPARATOR = 'elearning:';
+		DEFAULT_SLIDE_ATTRIBUTES_SEPARATOR = '\\\.slide:\\\s*?(\\\S.+?)$';
 
 	var SCRIPT_END_PLACEHOLDER = '__SCRIPT_END__';
 
@@ -70,7 +69,7 @@
 				value = attributes[i].value;
 
 			// disregard attributes that are used for markdown loading/parsing
-			if( /data\-(markdown|separator|vertical|notes|elearning)/gi.test( name ) ) continue;
+			if( /data\-(markdown|separator|vertical|notes)/gi.test( name ) ) continue;
 
 			if( value ) {
 				result.push( name + '="' + value + '"' );
@@ -93,7 +92,6 @@
 		options = options || {};
 		options.separator = options.separator || DEFAULT_SLIDE_SEPARATOR;
 		options.notesSeparator = options.notesSeparator || DEFAULT_NOTES_SEPARATOR;
-		options.elearningSeparator = options.elearningSeparator || DEFAULT_ELEARNING_SEPARATOR;
 		options.attributes = options.attributes || '';
 
 		return options;
@@ -110,15 +108,7 @@
 		var notesMatch = content.split( new RegExp( options.notesSeparator, 'mgi' ) );
 
 		if( notesMatch.length === 2 ) {
-			var eLearningMatch = notesMatch[1].split( new RegExp( options.elearningSeparator, 'mgi' ) );
-
-			content = notesMatch[0] + '<aside class="notes">';
-			if ( eLearningMatch.length === 2 ) {
-				content += marked(eLearningMatch[0].trim()) + '</aside><aside class="elearning">' + marked(eLearningMatch[1].trim()) + '</aside>';
-			} else {
-				content += marked(notesMatch[1].trim()) + '</aside>';
-			}
-
+			content = notesMatch[0] + '<aside class="notes">' + marked(notesMatch[1].trim()) + '</aside>';
 		}
 
 		// prevent script end tags in the content from interfering
@@ -150,7 +140,7 @@
 		// iterate until all blocks between separators are stacked up
 		while( matches = separatorRegex.exec( markdown ) ) {
 			notes = null;
-			elearnings = null;
+
 			// determine direction (horizontal by default)
 			isHorizontal = horizontalSeparatorRegex.test( matches[0] );
 
@@ -236,7 +226,6 @@
 								separator: section.getAttribute( 'data-separator' ),
 								verticalSeparator: section.getAttribute( 'data-separator-vertical' ),
 								notesSeparator: section.getAttribute( 'data-separator-notes' ),
-								elearningSeparator: section.getAttribute( 'data-separator-elearning' ),
 								attributes: getForwardedAttributes( section )
 							});
 
@@ -263,13 +252,12 @@
 				}
 
 			}
-			else if( section.getAttribute( 'data-separator' ) || section.getAttribute( 'data-separator-vertical' ) || section.getAttribute( 'data-separator-notes' ) || section.getAttribute( 'data-separator-elearning' )) {
+			else if( section.getAttribute( 'data-separator' ) || section.getAttribute( 'data-separator-vertical' ) || section.getAttribute( 'data-separator-notes' ) ) {
 
 				section.outerHTML = slidify( getMarkdownFromSlide( section ), {
 					separator: section.getAttribute( 'data-separator' ),
 					verticalSeparator: section.getAttribute( 'data-separator-vertical' ),
 					notesSeparator: section.getAttribute( 'data-separator-notes' ),
-					elearningSeparator: section.getAttribute( 'data-separator-elearning' ),
 					attributes: getForwardedAttributes( section )
 				});
 
@@ -365,7 +353,6 @@
 				section.setAttribute( 'data-markdown-parsed', true )
 
 				var notes = section.querySelector( 'aside.notes' );
-				var elearning = section.querySelector( 'aside.elearning' );
 				var markdown = getMarkdownFromSlide( section );
 
 				section.innerHTML = marked( markdown );
@@ -380,10 +367,6 @@
 				// having overwritten the section's HTML
 				if( notes ) {
 					section.appendChild( notes );
-				}
-
-				if ( elearning ) {
-					section.appendChild( elearning );
 				}
 
 			}
