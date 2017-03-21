@@ -9,8 +9,6 @@
         var parent = $(image).parent();
         var file = $(image).attr("data-svg");
 
-        console.log("svg: " + file);
-
         var filename = file.split('/').pop()
         var fileNoExt = filename.substr(0, filename.lastIndexOf('.'));
 
