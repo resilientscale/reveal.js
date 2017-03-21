@@ -11,12 +11,22 @@
 
         console.log("svg: " + file);
 
+        var filename = file.split('/').pop()
+        var fileNoExt = filename.substr(0, filename.lastIndexOf('.'));
+
         // fetch the svg
         var filePath = "slides/" + window.presentation + "/" + file;
         //$.get(filePath, function(data, status, jqXhr) {
         $.ajax({
           url: filePath,
-          async: false
+          async: false,
+
+          //Make Sketch IDs local to this file
+          dataFilter: function(response){
+            return response
+              .replace(/((path|mask)-[0-9]*)/g, fileNoExt+"-$1")
+              .replace(/(#)((path|mask)-[0-9]*)/g, "$1"+fileNoExt+"-$2");
+          }
         })
         .done(function(data) {
           var fragmentIds = [];
