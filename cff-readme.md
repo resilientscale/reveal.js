@@ -13,7 +13,7 @@ To make development of slides (and this reveal fork) easier, you need to use doc
   $ docker pull rscale/node
   ```
 1. Clone this repo (if you haven't already)
-1. You should already have the developer certification repo locally (if not, go get it.  we will wait).
+1. You should already have the developer training course repo locally (if not, go get it.  we will wait).
 1. Run it with the included script (from the root of this repo):
   ```
   $ ./docker-run.sh <path-to-local-reveal-clone> <path-to-slides-dir>
