@@ -16,11 +16,11 @@ div.logo img {
 div.branding-logo {
   position: fixed;
   bottom: 15px;
-  left: 15px; }
+  left: 15px;
+  max-width: 100px; }
 
 div.branding-logo img {
-  width: 100px;
-  max-width: 100px; }
+  width: 100px; }
 
 .reveal section p.svg {
   border-bottom: 0px solid white;
