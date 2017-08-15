@@ -27,7 +27,7 @@ To make development of slides (and this reveal fork) easier, you need to use doc
   1. `npm install` - You likely only have to do this once.
   1. `npm start`
   1. In a browser, you can now navigate to `http://localhost:8000?pres=<preso-folder-name>`
-    Example: `http://localhost:8000?pres=cf-mocf-motivators`
+    Example: `http://localhost:8000?pres=cf-motivators`
 
   You can change presentations by changing the value of `<preso-folder-name>` without restarting the container.  
 
